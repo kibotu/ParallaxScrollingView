@@ -17,6 +17,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     compileOptions {
@@ -66,15 +67,39 @@ android {
     }
 
     // endregion
+
+    // region exclude duplicated meta inf files
+
+    packagingOptions {
+        exclude 'META-INF/library-core_release.kotlin_module'
+        exclude 'META-INF/lib_release.kotlin_module'
+    }
+
+    // endregion
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation libs.kotlinJdk8
+    implementation libs.supportMultidex
+    implementation 'androidx.core:core:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.appcompat:appcompat-resources:1.1.0'
+    implementation libs.constraintLayout2
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
     implementation 'com.google.android.material:material:1.1.0-alpha09'
 
     implementation project(":ParallaxScrollingView")
+    implementation  libs.recyclerViewPresenter4
+    implementation  libs.exozetCore
+    implementation  libs.logger
+    implementation  libs.logger
+
+    implementation libs.glide
+    implementation libs.glideOkHttp3
+    kapt libs.glideAnnotationsProcessor
+
+    implementation 'com.ginsberg:cirkle:1.0.1'
+
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-beta04'
 }

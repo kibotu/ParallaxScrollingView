@@ -4,12 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root"
     android:background="@drawable/bg_smart_gradient"
     tools:context=".MainActivity">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <net.kibotu.parallaxscrollingview.ParallaxScrollingView
         android:id="@+id/wave1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +30,7 @@
 
     <net.kibotu.parallaxscrollingview.ParallaxScrollingView
         android:id="@+id/wave2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +50,7 @@
 
     <net.kibotu.parallaxscrollingview.ParallaxScrollingView
         android:id="@+id/wave4"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +61,7 @@
 
     <net.kibotu.parallaxscrollingview.ParallaxScrollingView
         android:id="@+id/wave5"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +72,7 @@
 
     <net.kibotu.parallaxscrollingview.ParallaxScrollingView
         android:id="@+id/wave6"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
