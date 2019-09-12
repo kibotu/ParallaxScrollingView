@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/bg_smart_bottom_gradient</color>
+    <color name="colorPrimaryDark">@color/bg_smart_top_gradient</color>
+    <color name="colorAccent">@color/bg_smart_top_gradient</color>
+
+    <!-- save background -->
+    <color name="bg_save_top_gradient">#68FFE2</color>
+    <color name="bg_save_bottom_gradient">#0957A6</color>
+
+    <!-- normal background -->
+    <color name="bg_normal_top_gradient">#24EEC1</color>
+    <color name="bg_normal_bottom_gradient">#0B5DAA</color>
+
+    <!-- smart background -->
+    <color name="bg_smart_top_gradient">#3CD8F4</color>
+    <color name="bg_smart_bottom_gradient">#0957A6</color>
+
+    <!-- off background -->
+    <color name="bg_off_top_gradient">#C8C8C8</color>
+    <color name="bg_off_bottom_gradient">#0957A6</color>
 </resources>

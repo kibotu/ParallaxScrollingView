@@ -38,7 +38,7 @@ android {
     // region compile options
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     // endregion
@@ -85,10 +85,11 @@ android {
 
 dependencies {
     implementation libs.kotlinJdk8
-    implementation libs.supportAppCompat
-    implementation libs.appCompatResources
-    implementation libs.androidKtxCore
-    compileOnly libs.viewpager2
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat-resources:1.1.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-beta04'
+
+    implementation 'androidx.core:core-ktx:1.1.0'
 }
 
 configurations.all {

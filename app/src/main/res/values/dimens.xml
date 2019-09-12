@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- wave speed -->
+    <dimen name="wave1_speed">.33dp</dimen>
+    <dimen name="wave2_speed">.66dp</dimen>
+    <dimen name="wave3_speed">.99dp</dimen>
+
+</resources>

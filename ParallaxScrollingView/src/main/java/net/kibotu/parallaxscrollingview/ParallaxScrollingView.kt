@@ -1,6 +1,5 @@
 package net.kibotu.parallaxscrollingview
 
-import android.R.color
 import android.annotation.TargetApi
 import android.content.Context
 import android.content.res.TypedArray
@@ -23,27 +22,6 @@ import java.util.*
 
 class ParallaxScrollingView : SurfaceView, Callback {
 
-    private val uuid by lazy { UUID.randomUUID().toString() }
-
-    private val textureClipBounds = Rect()
-
-    private var maxBitmapHeight = 0
-
-    private var shader: BitmapShader? = null
-
-    private var paint = Paint()
-
-    private var shape = RectShape()
-
-    private var translateX = 0f
-    private var translateY = 0f
-
-    private val textureMatrix = Matrix()
-
-    private var image: Bitmap? = null
-
-    private var drawable = 0
-
     constructor(context: Context?) : super(context) {
         init(null)
     }
@@ -61,6 +39,34 @@ class ParallaxScrollingView : SurfaceView, Callback {
         init(attrs)
     }
 
+    private val uuid by lazy { UUID.randomUUID().toString() }
+
+    private val textureClipBounds by lazy { Rect() }
+
+    private var maxBitmapHeight = 0
+
+    private var shader: BitmapShader? = null
+
+    private val paint by lazy {
+        Paint().apply {
+            isDither = true
+            isAntiAlias = true
+            isFilterBitmap = true
+            style = Style.FILL
+        }
+    }
+
+    private var shape = RectShape()
+
+    private var translateX = 0f
+    private var translateY = 0f
+
+    private val textureMatrix by lazy { Matrix() }
+
+    private var image: Bitmap? = null
+
+    private var drawableId = 0
+
     private fun init(attrs: AttributeSet?) {
         if (isInEditMode) return
         log { "[init] $uuid" }
@@ -68,15 +74,12 @@ class ParallaxScrollingView : SurfaceView, Callback {
         holder.addCallback(this)
         holder.setFormat(PixelFormat.TRANSLUCENT)
         setZOrderOnTop(true)
-        setBackgroundResource(color.transparent)
-        paint.isDither = true
-        paint.isAntiAlias = true
-        paint.isFilterBitmap = true
-        paint.style = Style.FILL
+        setBackgroundResource(android.R.color.transparent)
+
         val ta: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.ParallaxScrollingView, 0, 0)
         try {
             speed = ta.getDimension(R.styleable.ParallaxScrollingView_speed, 0f)
-            drawable = ta.getResourceId(R.styleable.ParallaxScrollingView_src, 0)
+            drawableId = ta.getResourceId(R.styleable.ParallaxScrollingView_src, 0)
             create()
             freeResources()
         } catch (e: Exception) {
@@ -89,7 +92,7 @@ class ParallaxScrollingView : SurfaceView, Callback {
     private fun create() {
         log { "[create] $uuid" }
 
-        image = AppCompatResources.getDrawable(context, drawable)!!.toBitmap()
+        image = AppCompatResources.getDrawable(context, drawableId)!!.toBitmap()
 
         maxBitmapHeight = image!!.height.coerceAtLeast(maxBitmapHeight)
         shader = BitmapShader(image!!, TileMode.REPEAT, TileMode.REPEAT)
@@ -98,17 +101,17 @@ class ParallaxScrollingView : SurfaceView, Callback {
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
-        if (loggingEnabled) log("[surfaceCreated] $uuid")
+        log { "[surfaceCreated] $uuid" }
         if (image == null) create()
         start()
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-        if (loggingEnabled) log("[surfaceChanged] $uuid")
+        log { "[surfaceChanged] $uuid" }
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
-        if (loggingEnabled) log("[surfaceDestroyed] $uuid")
+        log { "[surfaceDestroyed] $uuid" }
         stop()
         freeResources()
     }
@@ -119,11 +122,11 @@ class ParallaxScrollingView : SurfaceView, Callback {
 //            return;
 
         if (image != null && !image!!.isRecycled) {
-            if (loggingEnabled) log("[freeResources] $uuid recycle bitmap")
+            log { "[freeResources] $uuid recycle bitmap" }
             try {
                 image!!.recycle()
             } catch (e: Exception) {
-                if (loggingEnabled) e.printStackTrace()
+                log { "[freeResources] failed ${e.localizedMessage}" }
             } finally {
                 image = null
             }
@@ -156,7 +159,7 @@ class ParallaxScrollingView : SurfaceView, Callback {
 
     fun start() {
         if (isRunning) return
-        if (loggingEnabled) log("[start] $uuid")
+        log { "[start] $uuid" }
         isRunning = true
         if (offsetScrolling == null) offsetScrolling = createOffsetScrolling()
         removeCallbacks(offsetScrolling)
@@ -164,7 +167,7 @@ class ParallaxScrollingView : SurfaceView, Callback {
     }
 
     fun stop() {
-        if (loggingEnabled) log("[stop] $uuid")
+        log { "[stop] $uuid" }
         removeCallbacks(offsetScrolling)
         isRunning = false
     }
@@ -173,6 +176,7 @@ class ParallaxScrollingView : SurfaceView, Callback {
     private var dX = 0f
 
     private var offsetScrolling: Runnable? = null
+
     private fun createOffsetScrolling(): Runnable {
         return Runnable {
             dX += speed
@@ -185,6 +189,6 @@ class ParallaxScrollingView : SurfaceView, Callback {
      * @param speed Dp per frame.
      */
     fun setSpeed(speed: Float) {
-        this.speed = dpToPx(speed)
+        this.speed = speed.dp
     }
 }
