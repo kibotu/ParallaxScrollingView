@@ -6,6 +6,8 @@ Parallax Scrolling View.
 - automatic scrolling with different speeds
 - minimal integration
 - gpu accelerated
+- supports vector drawables
+- supports bitmap drawables
 - supports ViewPager2
 - argb interpolated gradient on viewpager scrolling
 - updates statusBar color on scroll
