@@ -16,7 +16,7 @@ Parallax Scrolling View.
 
 ### How to use
 
-1 add ParallaxScrollingView to your layout
+1 add ParallaxScrollingView to [your layout](app/src/main/res/layout/activity_main.xml#L21-L82)
 
     <net.kibotu.parallaxscrollingview.ParallaxScrollingView
         android:id="@+id/wave1"
@@ -28,11 +28,11 @@ Parallax Scrolling View.
         app:speed="@dimen/wave1_speed"
         app:src="@drawable/ic_wave" />
 
-2 (Optional) add ParallaxScrollingViewOnPageScrollListener to ViewPager2
+2 (Optional) add [ParallaxScrollingViewOnPageScrollListener](app/src/main/java/net/kibotu/parallaxscrollingview/demo/MainActivity.kt#L28)) to ViewPager2
 
     viewPager.registerOnPageChangeCallback(ParallaxScrollingViewOnPageScrollListener(listOf(wave1, wave2, wave3, wave4, wave5, wave6), 2f))
 
-3(Optional) add OffsetOnPageScrollListener to ViewPager2
+3(Optional) add [OffsetOnPageScrollListener](app/src/main/java/net/kibotu/parallaxscrollingview/demo/MainActivity.kt#L30) to ViewPager2
 
     viewPager.registerOnPageChangeCallback(OffsetOnPageScrollListener(this, root, items.indices.map { backgrounds[it] }, true))
 
