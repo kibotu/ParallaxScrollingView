@@ -1,0 +1,36 @@
+buildscript {
+
+    apply from: "${project.rootDir}/Android-Dependencies/dependencies.gradle"
+
+    repositories {
+        google()
+        // https://storage-download.googleapis.com/maven-central/index.html
+        maven { url 'https://maven-central-eu.storage-download.googleapis.com/repos/central/data/' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath plugin.gradleBuildToolsCanary
+        classpath plugin.kotlinGradle
+        classpath plugin.kotlinApt
+        classpath pluginLibrary.mavenGradle
+        classpath plugin.dexcountGradle
+    }
+}
+
+allprojects {
+
+    apply from: "${project.rootDir}/Android-Dependencies/utils.gradle"
+
+    repositories {
+        google()
+        // https://storage-download.googleapis.com/maven-central/index.html
+        maven { url 'https://maven-central-eu.storage-download.googleapis.com/repos/central/data/' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
