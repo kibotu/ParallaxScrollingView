@@ -18,35 +18,52 @@ Parallax Scrolling View.
 
 1 add ParallaxScrollingView to [your layout](app/src/main/res/layout/activity_main.xml#L21-L82)
 
-    <net.kibotu.parallaxscrollingview.ParallaxScrollingView
-        android:id="@+id/wave1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:speed="@dimen/wave1_speed"
-        app:src="@drawable/ic_wave" />
+```xml
+<net.kibotu.parallaxscrollingview.ParallaxScrollingView
+    android:id="@+id/wave1"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:speed="@dimen/wave1_speed"
+    app:src="@drawable/ic_wave"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content" />
+```
 
 2 (Optional) add [ParallaxScrollingViewOnPageScrollListener](app/src/main/java/net/kibotu/parallaxscrollingview/demo/MainActivity.kt#L28)) to ViewPager2
 
-    viewPager.registerOnPageChangeCallback(ParallaxScrollingViewOnPageScrollListener(listOf(wave1, wave2, wave3, wave4, wave5, wave6), 2f))
+```kotlin
+viewPager.registerOnPageChangeCallback(ParallaxScrollingViewOnPageScrollListener(listOf(wave1, wave2, wave3, wave4, wave5, wave6), 2f))
+```
 
 3(Optional) add [OffsetOnPageScrollListener](app/src/main/java/net/kibotu/parallaxscrollingview/demo/MainActivity.kt#L30) to ViewPager2
 
-    viewPager.registerOnPageChangeCallback(OffsetOnPageScrollListener(this, root, items.indices.map { backgrounds[it] }, true))
+```kotlin
+viewPager.registerOnPageChangeCallback(OffsetOnPageScrollListener(this, root, items.indices.map { backgrounds[it] }, true))
+```
 
 ### How to install
 
-	repositories {
-	    maven {
-	        url "https://jitpack.io"
-	    }
-	}
-
-	dependencies {
-        implementation 'com.github.kibotu:ParallaxScrollingView:-SNAPSHOT'
+```groovy
+repositories {
+    maven {
+	url "https://jitpack.io"
     }
+}
+
+dependencies {
+    implementation 'com.github.kibotu:ParallaxScrollingView:-SNAPSHOT'
+}
+```
+
+### Notes
+
+Follow me on Twitter: [@wolkenschauer](https://twitter.com/wolkenschauer)
+
+Let me know what you think: [jan.rabe@kibotu.net](mailto:jan.rabe@kibotu.net)
+
+Contributions welcome!
+
 
 ### License
 <pre>
