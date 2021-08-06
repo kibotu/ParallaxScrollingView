@@ -12,7 +12,7 @@ Parallax Scrolling View.
 - argb interpolated gradient on viewpager scrolling
 - updates statusBar color on scroll
 
-[![Screenshot](https://github.com/kibotu/ParallaxScrollingView/raw/master/sample.gif)](https://github.com/kibotu/ParallaxScrollingView/raw/master/sample.gif)
+[![Screenshot](https://github.com/kibotu/ParallaxScrollingView/raw/master/sample_big.gif)](https://github.com/kibotu/ParallaxScrollingView/raw/master/sample_big.gif)
 
 ### How to use
 
