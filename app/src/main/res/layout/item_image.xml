@@ -6,11 +6,11 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimens/width_zero_dp"
+        android:layout_height="@dimens/width_zero_dp"
         android:layout_marginStart="@dimen/activity_vertical_margin"
         android:layout_marginEnd="@dimen/activity_vertical_margin"
-        app:cardElevation="8dp"
+        app:cardElevation="@dimens/eight_dp"
         app:layout_constraintVertical_bias="0.35"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="H,16:9"
