@@ -6,4 +6,12 @@
     <dimen name="wave2_speed">.66dp</dimen>
     <dimen name="wave3_speed">.99dp</dimen>
 
+    <!--margin and padding -->
+    <dimen name="width_zero_dp">0dp</dimen>
+    <dimen name="eight_dp">8dp</dimen>
+    <dimen name="bottom_margin">70dp</dimen>
+
+    <!-- text size -->
+
+
 </resources>
